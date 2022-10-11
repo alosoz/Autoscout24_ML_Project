@@ -7,7 +7,7 @@ Created on Sat Oct 1 07:03:58 2022
 """
 
 #Import libraries
-from matplotlib.backend_bases import LocationEvent
+# from matplotlib.backend_bases import LocationEvent
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -37,6 +37,8 @@ def main():
     st.markdown("<h3></h3>", unsafe_allow_html=True)
 
     #Setting Application sidebar default
+    colourr = ['Grey', 'White', 'Black', 'Red', 'Silver', 'Brown', 'Blue',
+       'Violet', 'Beige', 'Yellow', 'Green', 'Orange', 'Bronze', 'Gold']
     image = Image.open('App.png')
     image1 = Image.open('importance.png')
     add_selectbox = st.sidebar.selectbox(
@@ -67,7 +69,7 @@ def main():
         body_type = st.slider('Body Type', 0,5,0)
         seats = st.slider('Count of Seats', 0,9,0)
         doors = st.slider('Count of Doors', 0,6,0)
-        colour = st.slider('Colour', 0,13,0)
+        colour = st.selectbox('Colour', colourr)
         upholstery = st.slider('Upholstery', 0,5,0)
         drivetrain = st.slider('Drivetrain', 0,3,0)
 
