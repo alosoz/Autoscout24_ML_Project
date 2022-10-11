@@ -7,6 +7,7 @@ Created on Sat Oct 1 07:03:58 2022
 """
 
 #Import libraries
+from matplotlib.backend_bases import LocationEvent
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -44,60 +45,70 @@ def main():
     st.sidebar.image(image1)
     if add_selectbox == "Online":
         st.info("Input data below")
-        #Based on our optimal features selection
         st.subheader("Initials of Vehicle data")
-        mileage = st.slider('Mileage of Vehicle ', 0,300000,1000)
-        make_model = st.slider('make_model',0,800,0)
-        First_Registration_Year = st.slider('First_Registration_Year' ,0,2022,1980)
+        #Based on our optimal features selection
+        location = st.slider('Location', 0,3000,0)
+        First_Registration_Year = st.slider('First Registration Year' ,0,2022,1980)
+        Power_kW = st.slider('Power kW', 0,220,0)
+        Empty_Weight_kg = st.slider('Empty Weight (kg)', 0,5000,300)
+        mileage = st.slider('Mileage of Vehicle (km) ', 0,300000,1000)
+        gears = st.slider('Gears', 0,9,0)
+        make_model = st.slider('Make Model',0,800,0)
+        cylinders = st.slider('Cylinders', 0,12,0)
+        Engine_Size_cc = st.slider('Engine Size (cc)', 0,3000,600)
         Gearbox = st.slider('Gearbox', 0,2,0)
-        Engine_Size_cc = st.slider('Engine_Size_cc', 0,3000,600)
-        fuel_type = st.slider('fuel_type', 0,9,0)
-        seats = st.slider('seats', 0,9,0)
-        doors = st.slider('doors', 0,6,0)
-        gears = st.slider('gears', 0,9,0)
-        cylinders = st.slider('cylinders', 0,12,0)
-        Empty_Weight_kg = st.slider('Empty_Weight_kg', 0,5000,300)
-        co2_emissions = st.slider('co2_emissions', 0,300,0)
-        colour = st.slider('colour', 0,13,0)
-        upholstery = st.slider('upholstery', 0,5,0)
+        fuel_type = st.slider('Fuel Type', 0,9,0)
+        fuel_country = st.slider('Fuel Country', 0,7,0)
+        fuel_city = st.slider('Fuel City', 0,16,0)
+        fuel_comb = st.slider('Fuel Comb', 0,10,0)
+        co2_emissions = st.slider('CO2 Emissions', 0,300,0)
+        body_type = st.slider('Body Type', 0,5,0)
+        seats = st.slider('Count of Seats', 0,9,0)
+        doors = st.slider('Count of Doors', 0,6,0)
+        colour = st.slider('Colour', 0,13,0)
+        upholstery = st.slider('Upholstery', 0,5,0)
+        drivetrain = st.slider('Drivetrain', 0,3,0)
+
+     
         
 
         st.subheader("Details of Vehicle Data")                       
-        title_0 = st.selectbox('Full Service History:', ('No','Yes'))
-        title_1 = st.selectbox('Non Smoker Vehicle:', ('No','Yes'))
-        title_2 = st.selectbox('Air Conditioning:', ('Yes','No'))
-        title_3 = st.selectbox('Air Suspension:', ('No','Yes'))               # fsize = st.number_input('Passenger Family Size', min_value=0, max_value=9, value=1)
-        title_4 = st.selectbox('Cruise Control:', ('Yes','No'))
-        title_5 = st.selectbox('Navigation System:', ('No','Yes'))                        
-        title_6  = st.selectbox('ABS:', ('Yes','No')) 
-        title_7  = st.selectbox('Sunroof:', ('No','Yes')) 
-        title_8  = st.selectbox('Rain_sensor', ('No','Yes'))
-        title_9 = st.selectbox('Alarm System:', ('No','Yes')) 
-        title_10 = st.selectbox('Emergency System:', ('No','Yes')) 
-        title_11 = st.selectbox('Immobilizer:', ('No','Yes')) 
-        title_12 = st.selectbox('Bluetooth:', ('No','Yes'))                     
-        title_13 = st.selectbox('Radio:', ('No','Yes'))
-        
-        
+        title_0 = st.selectbox('LED Headlights:', ('No','Yes'))
+        title_1 = st.selectbox('Digital cockpit:', ('No','Yes'))
+        title_2 = st.selectbox('Heated streering weel:', ('No','Yes'))
+        title_3 = st.selectbox('Panorama roof:', ('No','Yes'))
+        title_4 = st.selectbox('Electrically adjustable seats:', ('No','Yes'))
+        title_5 = st.selectbox('Emergency System:', ('No','Yes')) 
+        title_6 = st.selectbox('Electric tailgate:', ('No','Yes'))
+        title_7 = st.selectbox('High bean assist:', ('No','Yes'))  
+        title_8 = st.selectbox('Full Service History:', ('No','Yes'))
 
 
 
         
         data = {
-                'Mileage': mileage,
-                'make_model': make_model,
-                'First_Registration_Year':First_Registration_Year,
+                'Location' : location,
+                'First Registration Year':First_Registration_Year,
+                'Power kW' : Power_kW,
+                'Empty Weight (kg)': Empty_Weight_kg,
+                'Mileage of Vehicle (km)': mileage,
+                'Gears': gears,
+                'Make Model': make_model,
+                'Cylinders': cylinders,
+                'Engine Size (cc)': Engine_Size_cc,
                 'Gearbox': Gearbox,
-                'Engine_Size_cc': Engine_Size_cc,
-                'fuel_type': fuel_type,
-                'seats': seats,
-                'doors': doors,
-                'gears': gears,
-                'cylinders': cylinders,
-                'Empty_Weight_kg': Empty_Weight_kg,
-                'co2_emissions': co2_emissions,
-                'colour': colour,
-                'upholstery': upholstery,
+                'Fuel Type': fuel_type,
+                'Fuel Country' : fuel_country,
+                'Fuel City' : fuel_city,
+                'Fuel Comb' : fuel_comb,
+                'CO2 Emissions': co2_emissions,
+                'Body Type' : body_type,
+                'Count of Seats': seats,
+                'Count of Doors': doors,
+                'Colour': colour,
+                'Upholstery': upholstery,
+                'Drivetrain' : drivetrain,
+                
                 'title_0':title_0, 
                 'title_1':title_1, 
                 'title_2':title_2, 
@@ -107,15 +118,9 @@ def main():
                 'title_6':title_6, 
                 'title_7':title_7, 
                 'title_8':title_8, 
-                'title_9':title_9, 
-                'title_10':title_10, 
-                'title_11':title_11,
-                'title_12':title_12, 
-                'title_13':title_13, 
-
-                
-            
+                                
                 }
+
         features_df = pd.DataFrame.from_dict([data])
         st.markdown("<h3></h3>", unsafe_allow_html=True)
         st.write('Overview of input is shown below')
