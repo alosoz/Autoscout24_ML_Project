@@ -7,7 +7,7 @@ Created on Sat Oct 1 07:03:58 2022
 """
 
 #Import libraries
-from matplotlib.backend_bases import LocationEvent
+# from matplotlib.backend_bases import LocationEvent
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -37,6 +37,12 @@ def main():
     st.markdown("<h3></h3>", unsafe_allow_html=True)
 
     #Setting Application sidebar default
+    colours_name = ['Please choose colour','Grey', 'White', 'Black', 'Red', 'Silver', 'Brown', 'Blue',
+       'Violet', 'Beige', 'Yellow', 'Green', 'Orange', 'Bronze', 'Gold']
+    drivetrain_name = ['Please choose type of drivetrain','Front', '4WD', 'Rear']
+    location_names = ['Please choose city','BREDA','ALMERE','UTRECHT','GRONINGEN','DEN BOSCH','AMSTERDAM','ROTTERDAM','HAARLEM','OSS',
+ 'APELDOORN','ZWOLLE','TILBURG','EINDHOVEN','AMERSFOORT','LEEUWARDEN','ARNHEM','VENLO','ENSCHEDE','DEN HAAG','MAASTRICHT','DELFT','LEIDEN',]
+ 
     image = Image.open('App.png')
     image1 = Image.open('importance.png')
     add_selectbox = st.sidebar.selectbox(
@@ -49,7 +55,7 @@ def main():
         st.info("Input data below")
         st.subheader("Initials of Vehicle data")
         #Based on our optimal features selection
-        location = st.slider('Location', 0,3000,0)
+        location = st.selectbox('Location', location_names)
         First_Registration_Year = st.slider('First Registration Year' ,0,2022,1980)
         Power_kW = st.slider('Power kW', 0,220,0)
         Empty_Weight_kg = st.slider('Empty Weight (kg)', 0,5000,300)
@@ -67,9 +73,9 @@ def main():
         body_type = st.slider('Body Type', 0,5,0)
         seats = st.slider('Count of Seats', 0,9,0)
         doors = st.slider('Count of Doors', 0,6,0)
-        colour = st.slider('Colour', 0,13,0)
+        colour = st.selectbox('Colour', colours_name)
         upholstery = st.slider('Upholstery', 0,5,0)
-        drivetrain = st.slider('Drivetrain', 0,3,0)
+        drivetrain = st.selectbox('Drivetrain', drivetrain_name)
 
      
         
