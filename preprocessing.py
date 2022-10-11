@@ -20,25 +20,19 @@ def preprocess(df, option):
     #Drop values based on operational options``
     if (option == "Online"):
         # Encode binary categorical features
-        binary_list = ['Title_0','Title_1','Title_2','Title_3','family_size_0','family_size_1','Embarked_C','Embarked_Q','Embarked_S','T_A','T_A4',
-                   'T_A5','T_AQ3', 'T_AQ4', 'T_AS', 'T_C', 'T_CA', 'T_CASOTON', 'T_FC', 'T_FCC','T_Fa','T_LINE', 'T_LP', 
-                   'T_PC','T_PP', 'T_PPP', 'T_SC', 'T_SCA3','T_SCA4', 'T_SCAH', 'T_SCOW', 'T_SCPARIS', 'T_SCParis', 'T_SOC','T_SOP',
-                   'T_SOPP',  'T_SOTONO2',  'T_SOTONOQ', 'T_SP', 'T_STONO','T_STONO2','T_STONOQ', 'T_SWPP', 'T_WC', 'T_WEP', 'T_x',
-                   'Pclass_1','Pclass_2','Pclass_3', 'Sex_female', 'Sex_male']
+        binary_list = ['title_0','title_1', 'title_2', 'title_3', 'title_4','title_5','title_6','title_7', 'title_8']
         df[binary_list] = df[binary_list].apply(binary_map)
-        columns = ['Age','Sibsp','Parch','Fare',
-                   'Title_0','Title_1','Title_2','Title_3','Fsize','family_size_0','family_size_1','Embarked_C','Embarked_Q','Embarked_S','T_A','T_A4',
-                   'T_A5','T_AQ3', 'T_AQ4', 'T_AS', 'T_C', 'T_CA', 'T_CASOTON', 'T_FC', 'T_FCC','T_Fa','T_LINE', 'T_LP', 
-                   'T_PC','T_PP', 'T_PPP', 'T_SC', 'T_SCA3','T_SCA4', 'T_SCAH', 'T_SCOW', 'T_SCPARIS', 'T_SCParis', 'T_SOC','T_SOP',
-                   'T_SOPP',  'T_SOTONO2',  'T_SOTONOQ', 'T_SP', 'T_STONO','T_STONO2','T_STONOQ', 'T_SWPP', 'T_WC', 'T_WEP', 'T_x',
-                   'Pclass_1','Pclass_2','Pclass_3', 'Sex_female', 'Sex_male']
+        columns = ['location','First_Registration_Year','Power_kW','Empty_Weight_kg','mileage','gears','make_model',
+        'cylinders','Engine_Size_cc','Gearbox','fuel_type','fuel_country','fuel_city','fuel_comb','co2_emissions',
+        'body_type','seats','doors','colour','upholstery','drivetrain','title_0','title_1','title_2','title_3',
+        'title_4','title_5','title_6','title_7','title_8']
         #Encoding the other categorical categoric features with more than two categories
         df = pd.get_dummies(df).reindex(columns=columns, fill_value=0)
         #print(df.head())
     elif (option == "Batch"):
         #pass
         #Drop Passenger ID and Cabin
-        df.drop(labels = ["PassengerId", "Cabin"], axis = 1, inplace = True)
+        #df.drop(labels = ["PassengerId", "Cabin"], axis = 1, inplace = True)
         #print(df.isna().sum().sum())
         #Name title operatiom
         name = df["Name"]
@@ -73,12 +67,10 @@ def preprocess(df, option):
         #df["Sex"] = df["Sex"].astype("category")
         df = pd.get_dummies(df, columns=["Sex"])
         #print(df.head())
-        columns = ['Age','Sibsp','Parch','Fare',
-                   'Title_0','Title_1','Title_2','Title_3','Fsize','family_size_0','family_size_1','Embarked_C','Embarked_Q','Embarked_S','T_A','T_A4',
-                   'T_A5','T_AQ3', 'T_AQ4', 'T_AS', 'T_C', 'T_CA', 'T_CASOTON', 'T_FC', 'T_FCC','T_Fa','T_LINE', 'T_LP', 
-                   'T_PC','T_PP', 'T_PPP', 'T_SC', 'T_SCA3','T_SCA4', 'T_SCAH', 'T_SCOW', 'T_SCPARIS', 'T_SCParis', 'T_SOC','T_SOP',
-                   'T_SOPP',  'T_SOTONO2',  'T_SOTONOQ', 'T_SP', 'T_STONO','T_STONO2','T_STONOQ', 'T_SWPP', 'T_WC', 'T_WEP', 'T_x',
-                   'Pclass_1','Pclass_2','Pclass_3', 'Sex_female', 'Sex_male']
+        columns = ['location','First_Registration_Year','Power_kW','Empty_Weight_kg','mileage','gears','make_model',
+        'cylinders','Engine_Size_cc','Gearbox','fuel_type','fuel_country','fuel_city','fuel_comb','co2_emissions',
+        'body_type','seats','doors','colour','upholstery','drivetrain','title_0','title_1','title_2','title_3',
+        'title_4','title_5','title_6','title_7','title_8']
         #Encoding the other categorical categoric features with more than two categories
         df = pd.get_dummies(df).reindex(columns=columns, fill_value=0)
         #print(df.head())
