@@ -39,10 +39,14 @@ def main():
     #Setting Application sidebar default
     colours_name = ['Please choose colour','Grey', 'White', 'Black', 'Red', 'Silver', 'Brown', 'Blue',
        'Violet', 'Beige', 'Yellow', 'Green', 'Orange', 'Bronze', 'Gold']
-    drivetrain_name = ['Please choose type of drivetrain','Front', '4WD', 'Rear']
+    drivetrain_names = ['Please choose type of drivetrain','Front', '4WD', 'Rear']
     location_names = ['Please choose city','BREDA','ALMERE','UTRECHT','GRONINGEN','DEN BOSCH','AMSTERDAM','ROTTERDAM','HAARLEM','OSS',
  'APELDOORN','ZWOLLE','TILBURG','EINDHOVEN','AMERSFOORT','LEEUWARDEN','ARNHEM','VENLO','ENSCHEDE','DEN HAAG','MAASTRICHT','DELFT','LEIDEN',]
- 
+    fuel_types = ['Please choose fuel type','Gasoline', 'Diesel', 'Electric/Diesel', 'LPG', 'Electric','Electric/Gasoline', 'CNG', 'Ethanol', 'Others', 'Hydrogen']
+    upholstery_names = ['Please choose upholstery type','Cloth', 'Partleather', 'Fullleather', 'alcantara', 'Other','Velour']
+    
+    
+    
     image = Image.open('App.png')
     image1 = Image.open('importance.png')
     add_selectbox = st.sidebar.selectbox(
@@ -65,7 +69,7 @@ def main():
         cylinders = st.slider('Cylinders', 0,12,0)
         Engine_Size_cc = st.slider('Engine Size (cc)', 0,3000,600)
         Gearbox = st.slider('Gearbox', 0,2,0)
-        fuel_type = st.slider('Fuel Type', 0,9,0)
+        fuel_type = st.selectbox('Fuel Type', fuel_types)
         fuel_country = st.slider('Fuel Country', 0,7,0)
         fuel_city = st.slider('Fuel City', 0,16,0)
         fuel_comb = st.slider('Fuel Comb', 0,10,0)
@@ -74,8 +78,8 @@ def main():
         seats = st.slider('Count of Seats', 0,9,0)
         doors = st.slider('Count of Doors', 0,6,0)
         colour = st.selectbox('Colour', colours_name)
-        upholstery = st.slider('Upholstery', 0,5,0)
-        drivetrain = st.selectbox('Drivetrain', drivetrain_name)
+        upholstery = st.selectbox('Upholstery', upholstery_names)
+        drivetrain = st.selectbox('Drivetrain', drivetrain_names)
 
      
         
