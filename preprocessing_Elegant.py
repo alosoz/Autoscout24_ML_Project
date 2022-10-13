@@ -1148,8 +1148,7 @@ locationd = {'LOON OP ZAND': 1089,
  'BAARLO LB': 152,
  'Waadhoeke': 2059,
  'Beek': 270,
- 'Maarheeze': 1218,
- ...}
+ 'Maarheeze': 1218}
 
 colourd = {'Grey': 7,
  'White': 12,
