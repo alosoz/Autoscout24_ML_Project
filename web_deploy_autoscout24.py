@@ -127,6 +127,7 @@ def main():
                 }
 
         features_df = pd.DataFrame.from_dict([data])
+
         st.markdown("<h3></h3>", unsafe_allow_html=True)
         st.write('Overview of input is shown below')
         st.markdown("<h3></h3>", unsafe_allow_html=True)
@@ -134,9 +135,11 @@ def main():
 
 
         #Preprocess inputs
-        preprocess_df = preprocess(features_df, 'Online')
+        # preprocess_df = preprocess(features_df, 'Online')
+        
+        #features_df_scaled = sc.transform(features_df)
 
-        prediction = model.predict(preprocess_df)
+        prediction = np.exp(model.predict(features_df))
 
         if st.button('Predict'):
             if prediction == 1:
@@ -144,8 +147,8 @@ def main():
                 st.warning(prediction)
         
 
-    else:
-        st.subheader("Dataset upload")
+    # else:
+    #     st.subheader("Dataset upload")
         # uploaded_file = st.file_uploader("Choose a file")
         # if uploaded_file is not None:
         #     data = pd.read_csv(uploaded_file,encoding= 'utf-8')
