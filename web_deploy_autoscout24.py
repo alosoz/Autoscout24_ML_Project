@@ -51,7 +51,7 @@ def main():
     image1 = Image.open('importance.png')
     add_selectbox = st.sidebar.selectbox(
     "How would you like to predict?", ("Online", "Batch"))
-    st.sidebar.info('This app is created to predict Autoscout24 use case')
+    st.sidebar.info('This app is created to predict the Price of Autos')
     st.sidebar.image(image)
     st.sidebar.info('This app uses Random Forest Model')
     st.sidebar.image(image1)
@@ -143,8 +143,8 @@ def main():
 
         if st.button('Predict'):
             if prediction == 1:
-                #st.success(f'Your vehicles value is € {int(prediction)}')
-                st.warning(prediction)
+                st.warning(f'Your vehicles value is € {int(prediction)}')
+                #st.warning(prediction)
         
 
     # else:
