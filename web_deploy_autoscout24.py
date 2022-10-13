@@ -23,7 +23,7 @@ filename = 'RandomForestRegressor.sav'
 model = joblib.load(filename)
 
 #Import python scripts
-from preprocessing_Elegant import preprocess, fuel_countryd, locationd, make_modeld, Gearboxd, Upholstery_Colord, upholsteryd, drivetraind, typed,body_typed, sellerd, fuel_typed, colourd, n_dictd
+from preprocessing_Elegant import preprocess, fuel_countryd, locationd, make_modeld, Gearboxd, upholsteryd, drivetraind,body_typed, fuel_typed, colourd, n_dictd
 
 def main():
     #Setting Application title
