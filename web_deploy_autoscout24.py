@@ -136,10 +136,10 @@ def main():
 
         #Preprocess inputs
         # preprocess_df = preprocess(features_df, 'Online')
-        
-        #features_df_scaled = sc.transform(features_df)
 
-        prediction = np.exp(model.predict(features_df))
+        # features_df_scaled = sc.transform(features_df)
+
+        prediction = model.predict(features_df)
 
         if st.button('Predict'):
             if prediction == 1:
